@@ -3,24 +3,19 @@
 (function(){
 	var ang = angular.module("food_module", ["custom_directive"]); // Square brackets contains the list of dependent modules, declaring a module
 
-	
-	ang.controller("userDetailsController",function($scope){
-		
-/**		if($scope.name!=""  && $scope.address!=""){
-			localStorage.setItem("name", $scope.name);
-			localStorage.setItem("address", $scope.address);
+	ang.controller("userDetailsController",function($rootScope, $scope){
+		if (localStorage.getItem('name'))
+		{
+			$scope.name = localStorage.getItem('name');
+			$scope.address = localStorage.getItem('address');
 		}
-		**/
-		//$scope.name=null;
-		//$scope.address=null;
-		//console.log($scope.name);
+
 		$scope.setDetails=function(){
 			localStorage.removeItem('name');
 			localStorage.removeItem('address');
 			localStorage.setItem('name',$scope.name);
 			localStorage.setItem('address',$scope.address);
 		};
-
 	});
 
 })();

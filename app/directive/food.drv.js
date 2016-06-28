@@ -8,14 +8,8 @@
 		return {
 			restrict : 'E',
 			templateUrl: 'app/template/userDetails.html'
-			/*scope: {
-				name: '=',
-				address: '=',
-				setDetails: '&'
-			}*/
 		};
 	});
-
 	
 	ang.directive("navbar" ,function(){
 		return {
@@ -23,7 +17,5 @@
 			templateUrl: 'app/template/navbar.html'
 		};
 	});
-
-	
 
 })();
