@@ -8,6 +8,11 @@
 		return {
 			restrict : 'E',
 			templateUrl: 'app/template/userDetails.html'
+			/*scope: {
+				name: '=',
+				address: '=',
+				setDetails: '&'
+			}*/
 		};
 	});
 
