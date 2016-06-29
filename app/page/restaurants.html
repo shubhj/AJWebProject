@@ -1,18 +1,12 @@
 <h1>Hi There</h1>
 
-<div>
+<div ng-controller="CuisineListController">
 	<aside>
 	Cuisine
-		<div class="checkbox" ng-controller="CuisineListController">
-			<label><input type="checkbox" value="">Option 1</label>
+		<div class="checkbox" ng-repeat="cuisine in cuisines">
+			<label><input type="checkbox" value="">{{cuisine}}</label>
 			</div>
-			<div class="checkbox">
-			  <label><input type="checkbox" value="">Option 2</label>
-			</div>
-			<div class="checkbox disabled">
-			  <label><input type="checkbox" value="" >Option 3</label>
-			  {{cuisines}}
-		</div>
+				
 	</aside>
-
+	{{cuisines}} found !
 </div>

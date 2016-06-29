@@ -19,23 +19,21 @@
 	});
 
 	
-	ang.controller("CuisineListController",function($scope, foodService){
+	ang.controller("CuisineListController",function($scope, foodService) {
 		
 		$scope.restaurants = restaurantsData = [];
-		$scope.cuisines = [];
 		
-		(function(){
-			foodService.getRestaurants().then(function(result){
-				$scope.restaurants = restaurantsData = result.data;
-				var cuisines = [];
-				restaurantsData.forEach(function(restaurant){
-					cuisines.push(restaurant.cuisine)
-				});
-				$scope.cuisines = cuisines;
-			})
-		})();
-
-		console.log($scope.cuisines)
+		foodService.getRestaurants().then(function(result) {
+			$scope.restaurants = restaurantsData = result.data;	
+			var cuisines = [];
+			restaurantsData.forEach(function(restaurant){
+				cuisines.push(restaurant.cuisine)
+			});
+			cuisines = cuisines.filter( function( item, index, inputArray ) {
+           		return inputArray.indexOf(item) == index;
+    		});
+			$scope.cuisines = cuisines;
+		});
 
 	});
 

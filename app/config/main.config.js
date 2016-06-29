@@ -4,22 +4,10 @@
 	angular.module("main_module").config(function($routeProvider, $locationProvider){
 		$routeProvider
 		.when("/restaurants2", {
-			templateUrl: '/app/page/restaurants.html',
-			controller: function($scope, foodService) {
-				foodService.getRestaurants().then(function(result){
-					$scope.restaurants = result.data;
-				});
-			}
+			templateUrl: '/app/page/restaurants.html'
 		})
 		.otherwise({
-			templateUrl: '/app/page/restaurants.html',
-			controller: function($scope, foodService) {
-				foodService.getRestaurants().then(function(result){
-					$scope.restaurants = result.data;
-				});
-			}
+			templateUrl: '/app/page/restaurants.html'
 		})
 	});
-
-
 })();
