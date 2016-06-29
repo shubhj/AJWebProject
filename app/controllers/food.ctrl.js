@@ -1,9 +1,9 @@
 
 
 (function(){
-	var ang = angular.module("food_module", ["custom_directive"]); // Square brackets contains the list of dependent modules, declaring a module
+	var ang = angular.module("food_module", ["custom_directive", "service_module"]); // Square brackets contains the list of dependent modules, declaring a module
 
-	ang.controller("userDetailsController",function($rootScope, $scope){
+	ang.controller("userDetailsController",function( $scope){
 		if (localStorage.getItem('name'))
 		{
 			$scope.name = localStorage.getItem('name');
@@ -18,5 +18,29 @@
 		};
 	});
 
+	
+	ang.controller("CuisineListController",function($scope, foodService){
+		
+		$scope.restaurants = restaurantsData = [];
+		$scope.cuisines = [];
+		
+		(function(){
+			foodService.getRestaurants().then(function(result){
+				$scope.restaurants = restaurantsData = result.data;
+				var cuisines = [];
+				restaurantsData.forEach(function(restaurant){
+					cuisines.push(restaurant.cuisine)
+				});
+				$scope.cuisines = cuisines;
+			})
+		})();
+
+		console.log($scope.cuisines)
+
+	});
+
+
+
 })();
+
 

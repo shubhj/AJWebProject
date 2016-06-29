@@ -10,6 +10,7 @@
 			$http.get("http://localhost:9000/restaurants").then(
 				function(data) {
 					deferred.resolve(data);
+					//console.log(data)
 				},
 				function(data) {
 					deferred.reject(data);

@@ -7,13 +7,16 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script> 
-	<script type="text/javascript"  src="app/directive/food.drv.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.js"></script>
 
-	<script type="text/javascript"  src="app/controllers/food.ctrl.js"></script>
+	<script type="text/javascript"  src="app/directive/food.drv.js"></script>
+	<script type="text/javascript"  src="app/config/main.config.js"></script>
 	<script type="text/javascript"  src="app/service/food.srv.js"></script>
+	<script type="text/javascript"  src="app/controllers/food.ctrl.js"></script>
 
 </head>
-<body ng-app="food_module">
+<body ng-app="main_module">
 	<div >
 		<navbar></navbar>
 	</div>
@@ -32,6 +35,9 @@
   		</div>
 	</nav>
 
+	</div>
+	<div class="container">
+		<div ng-view></div>
 	</div>
 
 </body>
