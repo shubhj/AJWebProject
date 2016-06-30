@@ -1,0 +1,30 @@
+<div ng-controller="userDetailsController">
+
+	Deliver To: </br>
+	{{name}}</br>
+	{{address}}</br>
+	<button type="button"  data-toggle="modal" data-target="#myModal" >Change</button> </br>
+	Payment: </br>
+</div>
+
+<div ng-controller="restaurantController">
+	 {{showmenu()}} 
+ 	<tbody>
+		    	<tr style="color:black" class="panel-heading">
+		    		<td>Quantity</td>
+		    		<td>Description</td>
+		    		<td>price</td>
+		    		<td>Total Price</td>
+		    	</tr>				
+			  	<tr style="color:black" ng-repeat="(dish,qty) in menubar" ng-if="menubar[dish]>0" class="panel-bodys">	
+			  		<td>{{qty}}</td>
+					<td>{{dish}}</td>
+					<td>{{dish.price}}</td>
+				</tr>
+				</br>
+				<tr style="color:blue" class="panel-bodys">
+					<td>Total : {{price}} </td>
+				</tr>
+			</tbody>
+
+</div>

@@ -35,10 +35,48 @@
 			})
 		})();
 
-		console.log($scope.cuisines)
+		//console.log($scope.cuisines)
 
 	});
 
+
+	ang.controller("restaurantController",function($scope,foodService,$rootScope){
+		$scope.price=0;
+		//$scope.restaurant = [];
+		//console.log($scope.restaurantId);
+
+		foodService.getRestaurant($scope.restaurantId).then(function(result){
+			//console.log($scope.restaurantId);
+			$scope.restaurant=result.data;
+			$scope.menubar={};
+			//console.log($scope.restaurant.id);
+			console.log($scope.restaurant);
+		})
+
+		$rootScope.accNo = function() {
+		    return $scope.menubar;
+		}
+
+		/*pageB*/   
+		$scope.showmenu = function() {
+		    return $scope.menu = $rootScope.accNo();
+		}
+
+
+		$scope.addItem = function(item){
+			if($scope.menubar[item.name])
+				$scope.menubar[item.name]=$scope.menubar[item.name]+1;
+			else
+				$scope.menubar[item.name]=1;
+			$scope.price=$scope.price+item.price;
+
+
+		}
+		$scope.deleteItem= function(item){
+			$scope.menubar[item.name]=$scope.menubar[item.name]-1;
+			$scope.price=$scope.price-item.price;
+		}
+	});
 
 
 })();

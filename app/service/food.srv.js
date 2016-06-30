@@ -1,4 +1,4 @@
- 
+
  (function(){
 
  	angular.module("service_module",[]);
@@ -7,7 +7,7 @@
 
 		this.getRestaurants = function() {
 			var deferred = $q.defer();
-			$http.get("http://localhost:9000/restaurants").then(
+			$http.get("http://localhost:8000/restaurants").then(
 				function(data) {
 					deferred.resolve(data);
 					//console.log(data)
@@ -21,7 +21,7 @@
 
 		this.getRestaurant = function(id) {	
 			var deferred = $q.defer();
-			$http.get("http://localhost:9000/restaturants/"+id).then(
+			$http.get("http://localhost:8000/restaurants/"+id).then(
 				function(data) {
 					deferred.resolve(data);
 				},
@@ -31,6 +31,8 @@
 			);
 			return deferred.promise;
 		};
+
+		
 
  	});
 
