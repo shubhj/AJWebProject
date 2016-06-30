@@ -54,43 +54,54 @@
 
 
 	ang.controller("restaurantController",function($scope,foodService,$rootScope){
-		$scope.price=0;
+		$scope.totalPrice=0;
 		//$scope.restaurant = [];
 		//console.log($scope.restaurantId);
-
+		$scope.menubar={};
 		foodService.getRestaurant($scope.restaurantId).then(function(result){
 			//console.log($scope.restaurantId);
 			$scope.restaurant=result.data;
-			$scope.menubar={};
+			
 			//console.log($scope.restaurant.id);
-			console.log($scope.restaurant);
 		})
 
-		$rootScope.accNo = function() {
-		    return $scope.menubar;
-		}
 
-		/*pageB*/   
-		$scope.showmenu = function() {
-		    return $scope.menu = $rootScope.accNo();
-		}
+		$scope.setMenu=function(){
+			localStorage.removeItem('totalPrice');
+			localStorage.removeItem('menubar');
+
+			localStorage.setItem('totalPrice',$scope.totalPrice);
+			localStorage.setItem('restaurant',$scope.restaurantId);
+			console.log($scope.menubar);
+
+
+			localStorage.setItem('menubar',JSON.stringify($scope.menubar));
+			//console.log(localStorage.getItem('menubar'));
+			//var userDetails = JSON.parse(localStorage.getItem('menubar'));
+			//console.log(userDetails);
+		};
 
 
 		$scope.addItem = function(item){
 			if($scope.menubar[item.name])
-				$scope.menubar[item.name]=$scope.menubar[item.name]+1;
+				$scope.menubar[item.name][0] = $scope.menubar[item.name][0]+1;
 			else
-				$scope.menubar[item.name]=1;
-			$scope.price=$scope.price+item.price;
+				$scope.menubar[item.name]=[1, item.price];
+			$scope.totalPrice=$scope.totalPrice+item.price;
 
 
 		}
 		$scope.deleteItem= function(item){
-			$scope.menubar[item.name]=$scope.menubar[item.name]-1;
-			$scope.price=$scope.price-item.price;
+			$scope.menubar[item.name][0]=$scope.menubar[item.name][0]-1;
+			$scope.totalPrice=$scope.totalPrice-item.price;
 		}
 	});
 
+	ang.controller("checkoutController", function($scope){
+		$scope.finalmenu = JSON.parse(localStorage.getItem('menubar'));
+		$scope.totalPrice=localStorage.getItem('totalPrice');
+		console.log($scope.finalmenu);
+	});
 
 })();
 

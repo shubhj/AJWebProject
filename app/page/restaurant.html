@@ -45,15 +45,17 @@
 		    	<tr style="color:black" class="panel-heading">
 		    		<td>Your Order</td>
 		    		<td></td>
-		    	</tr>				
+		    	</tr>		
 			  	<tr style="color:black" ng-repeat="(dish,qty) in menubar" ng-if="menubar[dish]>0" class="panel-bodys">	
 			  		<td ><p class="pull-right">{{qty}} &times;</p></td>
 					<td>{{dish}}</td>
 				</tr>
 				<tr style="color:blue" class="panel-bodys">
 					<td>Total : {{price}} $</td>
-					<td><a class="pull-right" href="#/checkout/{{restaurant.id}}">Checkout</td>	 
+					<td><a class="pull-right" href="#/checkout/{{restaurant.id}}" ng-click=setMenu()>Checkout</td>	 
 				</tr>
+
+
 			</tbody>
 		</table>
 		</div>

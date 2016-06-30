@@ -1,5 +1,5 @@
 (function(){
-	angular.module("main_module", ["ngRoute", "food_module", "service_module", "custom_directive"]);
+	angular.module("main_module", ["ngRoute", "ngCookies","food_module", "service_module", "custom_directive"]);
 
 	angular.module("main_module").config(function($routeProvider, $locationProvider){
 		$routeProvider

@@ -7,24 +7,27 @@
 	Payment: </br>
 </div>
 
-<div ng-controller="restaurantController">
-	 {{showmenu()}} 
- 	<tbody>
+<div ng-controller="checkoutController">
+ 	<table class="table">
 		    	<tr style="color:black" class="panel-heading">
 		    		<td>Quantity</td>
 		    		<td>Description</td>
 		    		<td>price</td>
 		    		<td>Total Price</td>
-		    	</tr>				
-			  	<tr style="color:black" ng-repeat="(dish,qty) in menubar" ng-if="menubar[dish]>0" class="panel-bodys">	
-			  		<td>{{qty}}</td>
+		    	</tr>	
+			  	<tr style="color:black" ng-repeat="(dish,lst) in finalmenu" >	
+			  		<td><p> {{lst[0]}} </p></td>
 					<td>{{dish}}</td>
-					<td>{{dish.price}}</td>
+					<td>{{lst[1]}}</td>
+					<td>{{ lst[0]*lst[1] }}</td>
+					
 				</tr>
-				</br>
+				<br>
 				<tr style="color:blue" class="panel-bodys">
-					<td>Total : {{price}} </td>
+					<td>Total : {{totalPrice}} </td>
 				</tr>
-			</tbody>
+			</table>
+
+			<a class="pull-right" href="#/menu/{{restaurantId}}"> Back </a>
 
 </div>
