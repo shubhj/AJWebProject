@@ -19,11 +19,11 @@
 	});
 
 	
-	ang.controller("CuisineListController",function($scope, foodService){
+	ang.controller("CuisineListController",function($scope, foodService) {
 		
 		$scope.restaurants = restaurantsData = [];
-		$scope.cuisines = [];
 		
+<<<<<<< HEAD
 		(function(){
 			foodService.getRestaurants().then(function(result){
 				$scope.restaurants = restaurantsData = result.data;
@@ -36,6 +36,19 @@
 		})();
 
 		//console.log($scope.cuisines)
+=======
+		foodService.getRestaurants().then(function(result) {
+			$scope.restaurants = restaurantsData = result.data;	
+			var cuisines = [];
+			restaurantsData.forEach(function(restaurant){
+				cuisines.push(restaurant.cuisine)
+			});
+			cuisines = cuisines.filter( function( item, index, inputArray ) {
+           		return inputArray.indexOf(item) == index;
+    		});
+			$scope.cuisines = cuisines;
+		});
+>>>>>>> 7e595a9cd1ba8877cf5e237294e82303c59a952e
 
 	});
 
