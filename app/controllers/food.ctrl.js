@@ -23,7 +23,7 @@
 		
 		$scope.restaurants = restaurantsData = [];
 		
-<<<<<<< HEAD
+
 		(function(){
 			foodService.getRestaurants().then(function(result){
 				$scope.restaurants = restaurantsData = result.data;
@@ -36,7 +36,7 @@
 		})();
 
 		//console.log($scope.cuisines)
-=======
+
 		foodService.getRestaurants().then(function(result) {
 			$scope.restaurants = restaurantsData = result.data;	
 			var cuisines = [];
@@ -48,7 +48,7 @@
     		});
 			$scope.cuisines = cuisines;
 		});
->>>>>>> 7e595a9cd1ba8877cf5e237294e82303c59a952e
+
 
 	});
 
